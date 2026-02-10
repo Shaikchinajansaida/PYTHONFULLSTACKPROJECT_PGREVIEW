@@ -1,0 +1,156 @@
+<!-- {% load static %}
+<link rel="stylesheet" href="{% static 'css/pg_detail.css' %}">
+
+<h1>{{ pg.name }}</h1>
+
+<p><strong>Area:</strong> {{ pg.area }}</p>
+<p><strong>Rent:</strong> ₹{{ pg.monthly_rent }}</p>
+<p><strong>Contact:</strong> {{ pg.contact }}</p>
+
+<hr>
+
+<h2>Today's Menu</h2>
+
+
+
+{% if pg.photo %}
+  <img src="{{ pg.photo.url }}" width="300">
+{% endif %}
+
+{% if pg.location %}
+  <p>
+    📍 <a href="{{ pg.location }}" target="_blank">Open in Google Maps</a>
+  </p>
+{% endif %}
+
+
+
+
+
+
+{% for menu in menus %}
+  <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+    <p><b>Date:</b> {{ menu.date }}</p>
+    <p>Breakfast: {{ menu.breakfast }}</p>
+    <p>Lunch: {{ menu.lunch }}</p>
+    <p>Dinner: {{ menu.dinner }}</p>
+  </div>
+{% empty %}
+  <p>No menu available</p>
+{% endfor %}
+
+<hr>
+
+<h2>Reviews</h2>
+
+{% for review in reviews %}
+  <div style="border:1px solid #eee; padding:10px; margin:10px;">
+    <p><b>User:</b> {{ review.user.username }}</p>
+    <p>Food ⭐ {{ review.food_rating }}/5</p>
+    <p>Hygiene ⭐ {{ review.hygiene_rating }}/5</p>
+    <p>{{ review.comment }}</p>
+  </div>
+{% empty %}
+  <p>No reviews yet</p>
+{% endfor %}
+
+<hr>
+
+{% if user.is_authenticated %}
+  <a href="{% url 'book_pg' pg.id %}">
+    <button>Book This PG</button>
+  </a>
+{% else %}
+  <p>
+    <a href="{% url 'login' %}">Login</a> to book this PG
+  </p>
+{% endif %}
+<br> <br>
+
+{% if user.is_authenticated %}
+  <a href="{% url 'add_review' pg.id %}">Add Review</a>
+<br><br>
+<a href="{% url 'add_complaint' pg.id %}">Raise Complaint</a>
+
+{% else %}
+  <p><a href="{% url 'login' %}">Login</a> to add a review</p>
+{% endif %}
+
+ -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ pg.name }}</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/pg_detail.css' %}">
+</head>
+<body>
+
+<div class="page-container">
+
+    <h1>{{ pg.name }}</h1>
+
+    <p><strong>Area:</strong> {{ pg.area }}</p>
+    <p><strong>Rent:</strong> ₹{{ pg.monthly_rent }}</p>
+    <p><strong>Contact:</strong> {{ pg.contact }}</p>
+
+    <hr>
+     {% if pg.photo %}
+        <img src="{{ pg.photo.url }}" class="pg-image">
+    {% endif %}
+
+    {% if pg.location %}
+        <p>
+            📍 <a href="{{ pg.location }}" target="_blank">Open in Google Maps</a>
+        </p>
+    {% endif %}
+    <h2>Today's Menu</h2>
+
+    
+
+    {% for menu in menus %}
+        <div class="menu-card">
+            <p><b>Date:</b> {{ menu.date }}</p>
+            <p>Breakfast: {{ menu.breakfast }}</p>
+            <p>Lunch: {{ menu.lunch }}</p>
+            <p>Dinner: {{ menu.dinner }}</p>
+        </div>
+    {% empty %}
+        <p>No menu available</p>
+    {% endfor %}
+
+    <hr>
+
+    <h2>Reviews</h2>
+
+    {% for review in reviews %}
+        <div class="review-card">
+            <p><b>User:</b> {{ review.user.username }}</p>
+            <p>Food ⭐ {{ review.food_rating }}/5</p>
+            <p>Hygiene ⭐ {{ review.hygiene_rating }}/5</p>
+            <p>{{ review.comment }}</p>
+        </div>
+    {% empty %}
+        <p>No reviews yet</p>
+    {% endfor %}
+
+    <hr>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'book_pg' pg.id %}" class="btn">Book This PG</a>
+        <br><br>
+        <a href="{% url 'add_review' pg.id %}">Add Review</a><br><br>
+        <a href="{% url 'add_complaint' pg.id %}">Raise Complaint</a>
+    {% else %}
+        <p><a href="{% url 'login' %}">Login</a> to continue</p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

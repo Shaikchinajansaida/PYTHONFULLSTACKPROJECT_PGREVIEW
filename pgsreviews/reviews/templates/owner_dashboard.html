@@ -1,0 +1,81 @@
+<!-- <h1>Owner Dashboard</h1>
+<p>Welcome {{ user.username }}</p>
+<a href="{% url 'logout' %}">Logout</a> -->
+<!-- 
+<h1>Owner Dashboard</h1>
+
+<p>Welcome {{ user.username }}</p>
+<a href="{% url 'logout' %}">Logout</a>
+
+<hr>
+
+<h2>Your PGs</h2>
+
+
+<hr>
+
+{% for pg in pgs %}
+  <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+    <h3>{{ pg.name }}</h3>
+    <p>Area: {{ pg.area }}</p>
+    <p>Rent: ₹{{ pg.monthly_rent }}</p>
+    <a href="{% url 'owner_bookings' %}"> View Booking Requests</a>
+    <br><br>
+    <a href="{% url 'add_menu' pg.id %}">Update Menu</a><br><br>
+    <a href="{% url 'owner_complaints' %}">View Complaints</a>
+  </div>
+  
+  
+{% empty %}
+  <p>No PG assigned to you.</p>
+{% endfor %}
+ -->
+
+
+ 
+ {% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/owner_dashboard.css' %}">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+
+    <header class="dashboard-header">
+        <h1>Owner Dashboard</h1>
+        <p>Welcome, <strong>{{ user.username }}</strong></p>
+        <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    </header>
+
+    <section class="pg-section">
+        <h2>Your PGs</h2>
+
+        <div class="pg-grid">
+            {% for pg in pgs %}
+                <div class="pg-card">
+                    <h3>{{ pg.name }}</h3>
+                    <p><strong>Area:</strong> {{ pg.area }}</p>
+                    <p><strong>Rent:</strong> ₹{{ pg.monthly_rent }}</p>
+
+                    <div class="pg-actions">
+                        <a href="{% url 'owner_bookings' %}">View Bookings</a>
+                        <a href="{% url 'add_menu' pg.id %}">Update Menu</a>
+                        <a href="{% url 'owner_complaints' %}">View Complaints</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="empty-text">No PG assigned to you.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

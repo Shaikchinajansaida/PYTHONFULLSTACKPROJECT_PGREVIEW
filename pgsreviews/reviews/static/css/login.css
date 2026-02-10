@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card {
+    background: #fff;
+    padding: 30px 35px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.auth-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #667eea;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #5a67d8;
+}
+
+.switch-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.switch-text a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+/* 📱 Small Mobile (max 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .auth-card {
+        width: 100%;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .auth-card h2 {
+        font-size: 20px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .form-group input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 9px;
+    }
+
+    .switch-text {
+        font-size: 13px;
+    }
+}
+
+/* 📱📲 Mobile & Small Tablets (max 768px) */
+@media (max-width: 768px) {
+    .auth-card {
+        width: 90%;
+        max-width: 380px;
+    }
+}
+
+/* 💻 Laptop (min 1024px) */
+@media (min-width: 1024px) {
+    .auth-card {
+        width: 360px;
+    }
+}
+
+/* 🖥 Large Screens (min 1200px) */
+@media (min-width: 1200px) {
+    .auth-card {
+        width: 400px;
+    }
+}
+

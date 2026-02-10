@@ -1,0 +1,162 @@
+<!-- <h2>Add Menu for {{ pg.name }}</h2>
+
+<form method="POST">
+  {% csrf_token %}
+
+  <input type="text" name="breakfast" placeholder="Breakfast" required><br><br>
+  <input type="text" name="lunch" placeholder="Lunch" required><br><br>
+  <input type="text" name="dinner" placeholder="Dinner" required><br><br>
+
+  <button type="submit">Save Menu</button>
+</form>
+
+<br>
+<a href="{% url 'owner_dashboard' %}">Back</a> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Menu</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .menu-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+            animation: fadeSlide 0.6s ease;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #1f3c88;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 15px;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4a6cf7;
+            box-shadow: 0 0 0 3px rgba(74,108,247,0.15);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #4a6cf7;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(74,108,247,0.4);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #4a6cf7;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 📱 Mobile Friendly */
+        @media (max-width: 480px) {
+            .menu-card {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="menu-card">
+
+    <h2>Add Menu for {{ pg.name }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Breakfast</label>
+        <input type="text" name="breakfast" placeholder="Breakfast" required>
+
+        <br><br>
+
+        <label>Lunch</label>
+        <input type="text" name="lunch" placeholder="Lunch" required>
+
+        <br><br>
+
+        <label>Dinner</label>
+        <input type="text" name="dinner" placeholder="Dinner" required>
+
+        <button type="submit" class="btn">Save Menu</button>
+    </form>
+
+    <a href="{% url 'owner_dashboard' %}" class="back-link">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

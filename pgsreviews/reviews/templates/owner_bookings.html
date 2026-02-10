@@ -1,0 +1,244 @@
+<!-- <h2>Booking Requests</h2>
+
+{% for booking in bookings %}
+  <p>
+    <b>PG:</b> {{ booking.pg.name }} <br>
+    <b>User:</b> {{ booking.user.username }} <br>
+    <b>Email:</b> {{ booking.user.email }} <br>
+    <b>Move-in:</b> {{ booking.move_in_date }} <br>
+    <b>Status:</b> {{ booking.status }}
+  </p>
+
+  {% if booking.status == 'pending' %}
+    <a href="{% url 'approve_booking' booking.id %}">Approve</a> |
+    <a href="{% url 'reject_booking' booking.id %}">Reject</a>
+  {% endif %}
+  <hr>
+{% endfor %} -->
+<!-- ................ -->
+
+<!-- <h2>Booking Requests</h2>
+
+{% if bookings %}
+  {% for booking in bookings %}
+    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+
+      <strong>PG:</strong> {{ booking.pg.name }} <br>
+      <strong>Resident:</strong> {{ booking.user.username }} <br>
+      <strong>Move-in Date:</strong> {{ booking.move_in_date }} <br>
+      <strong>Message:</strong> {{ booking.message|default:"—" }} <br>
+      <strong>Status:</strong> {{ booking.status }}
+
+      {% if booking.status == 'pending' %}
+        <br><br>
+        <a href="{% url 'approve_booking' booking.id %}">✅ Approve</a> |
+        <a href="{% url 'reject_booking' booking.id %}">❌ Reject</a>
+      {% endif %}
+
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No booking requests yet.</p>
+{% endif %} -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Requests</title>
+
+    <style>
+        /* ===== RESET ===== */
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px 15px;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 900px;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+            animation: slideFade 0.6s ease;
+        }
+
+        @keyframes slideFade {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #1f3c88;
+        }
+
+        /* ===== BOOKING CARD ===== */
+        .booking-card {
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+            background: #f8faff;
+            border-left: 6px solid #0d6efd;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .booking-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .booking-card strong {
+            color: #333;
+        }
+
+        .booking-card p {
+            margin: 6px 0;
+            color: #555;
+        }
+
+        /* ===== STATUS ===== */
+        .status {
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .pending {
+            color: #ff9800;
+        }
+
+        .approved {
+            color: #2e7d32;
+        }
+
+        .rejected {
+            color: #c62828;
+        }
+
+        /* ===== ACTION BUTTONS ===== */
+        .actions {
+            margin-top: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            margin-right: 8px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-approve {
+            background: #2e7d32;
+        }
+
+        .btn-approve:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .btn-reject {
+            background: #c62828;
+        }
+
+        .btn-reject:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .empty {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            padding: 40px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .container {
+                padding: 18px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Booking Requests</h2>
+
+    {% if bookings %}
+        {% for booking in bookings %}
+            <div class="booking-card">
+
+                <p><strong>PG:</strong> {{ booking.pg.name }}</p>
+                <p><strong>Resident:</strong> {{ booking.user.username }}</p>
+                <p><strong>Move-in Date:</strong> {{ booking.move_in_date }}</p>
+                <p><strong>Message:</strong> {{ booking.message|default:"—" }}</p>
+
+                <p>
+                    <strong>Status:</strong>
+                    <span class="status {{ booking.status }}">
+                        {{ booking.status }}
+                    </span>
+                </p>
+
+                {% if booking.status == 'pending' %}
+                    <div class="actions">
+                        <a href="{% url 'approve_booking' booking.id %}" class="btn btn-approve">
+                            ✅ Approve
+                        </a>
+                        <a href="{% url 'reject_booking' booking.id %}" class="btn btn-reject">
+                            ❌ Reject
+                        </a>
+                    </div>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty">
+            🚫 No booking requests yet.
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

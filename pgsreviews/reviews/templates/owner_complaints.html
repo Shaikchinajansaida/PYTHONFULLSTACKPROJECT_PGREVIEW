@@ -1,0 +1,164 @@
+<!-- <h1>Complaints</h1>
+
+{% for c in complaints %}
+  <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+    <p><b>PG:</b> {{ c.pg.name }}</p>
+    <p><b>User:</b> {{ c.user.username }}</p>
+    <p><b>Subject:</b> {{ c.subject }}</p>
+    <p>{{ c.description }}</p>
+    <p>Status: {{ c.status }}</p>
+
+    {% if c.status == 'pending' %}
+      <a href="{% url 'resolve_complaint' c.id %}">Mark as Resolved</a>
+    {% endif %}
+  </div>
+{% empty %}
+  <p>No complaints</p>
+{% endfor %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Complaints</title>
+
+    <style>
+        /* ===== RESET ===== */
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ===== PAGE BACKGROUND ===== */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+        }
+
+        /* ===== PAGE TITLE ===== */
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        /* ===== COMPLAINT CARD ===== */
+        .complaint-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px auto;
+            max-width: 700px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== TEXT ===== */
+        .complaint-card p {
+            margin: 6px 0;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .complaint-card b {
+            color: #222;
+        }
+
+        /* ===== STATUS ===== */
+        .status {
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .pending {
+            color: #e67e22;
+        }
+
+        .resolved {
+            color: #27ae60;
+        }
+
+        /* ===== ACTION BUTTON ===== */
+        .resolve-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 14px;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .resolve-btn:hover {
+            background: #219150;
+            transform: translateY(-2px);
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .empty {
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 50px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .complaint-card {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Complaints</h1>
+
+{% for c in complaints %}
+  <div class="complaint-card">
+    <p><b>PG:</b> {{ c.pg.name }}</p>
+    <p><b>User:</b> {{ c.user.username }}</p>
+    <p><b>Subject:</b> {{ c.subject }}</p>
+    <p>{{ c.description }}</p>
+
+    <p class="status {% if c.status == 'pending' %}pending{% else %}resolved{% endif %}">
+        Status: {{ c.status }}
+    </p>
+
+    {% if c.status == 'pending' %}
+      <a class="resolve-btn" href="{% url 'resolve_complaint' c.id %}">
+        ✔ Mark as Resolved
+      </a>
+    {% endif %}
+  </div>
+{% empty %}
+  <p class="empty">No complaints</p>
+{% endfor %}
+
+</body>
+</html>
+

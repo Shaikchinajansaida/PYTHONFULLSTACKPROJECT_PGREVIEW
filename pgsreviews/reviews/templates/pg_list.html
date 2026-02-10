@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PG List</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+
+    .pg-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .pg-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .pg-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .pg-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .pg-content {
+      padding: 15px;
+    }
+
+    .pg-content h3 {
+      margin: 0 0 10px;
+    }
+
+    .pg-content a {
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+    }
+
+    .pg-content p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .location {
+      margin-top: 10px;
+    }
+
+    .location a {
+      color: #e53935;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1 style="text-align:center;">PG Food & Hygiene Review</h1>
+<div style="text-align:center; margin-bottom:20px;">
+  
+  {% if user.is_authenticated and not user.is_staff %}
+  <p>
+    Welcome, {{ user.username }} |
+    <a href="{% url 'logout' %}">Logout</a>
+  </p>
+
+{% elif not user.is_authenticated %}
+  <p>
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'register' %}">Register</a>
+  </p>
+{% endif %}
+</div>
+
+
+
+<hr>
+
+{% if user.is_staff %}
+  <p style="text-align:center; margin-bottom:20px;">
+    <!-- <a href="/admin/">Go to Admin Panel</a> -->
+  </p>
+{% endif %}
+
+
+<div class="pg-container">
+
+  {% for pg in pgs %}
+  <div class="pg-card">
+
+    {% if pg.photo %}
+      <img src="{{ pg.photo.url }}">
+    {% else %}
+      <img src="https://via.placeholder.com/400x200?text=No+Image">
+    {% endif %}
+
+    <div class="pg-content">
+      <h3>
+        <a href="{% url 'pg_detail' pg.id %}">
+          {{ pg.name }}
+        </a>
+      </h3>
+
+      <p><strong>Area:</strong> {{ pg.area }}</p>
+      <p><strong>Rent:</strong> ₹{{ pg.monthly_rent }}</p>
+      <p><strong>Contact:</strong> {{ pg.contact }}</p>
+
+      {% if pg.location %}
+        <div class="location">
+          📍 <a href="{{ pg.location }}" target="_blank">View Location</a>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+  {% endfor %}
+
+</div>
+
+</body>
+</html>

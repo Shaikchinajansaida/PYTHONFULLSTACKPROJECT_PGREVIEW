@@ -1,0 +1,309 @@
+/* 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  min-height: 100vh;
+}
+
+
+.review-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.review-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  animation: slideUp 0.6s ease;
+}
+
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.review-card h2 {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 25px;
+}
+
+
+label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-bottom: 18px;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26,115,232,0.25);
+}
+
+textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #1a73e8, #0d47a1);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(26,115,232,0.45);
+}
+
+
+.back-link {
+  display: block;
+  margin-top: 18px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 480px) {
+  .review-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .review-card h2 {
+    font-size: 18px;
+  }
+
+  input,
+  textarea {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .review-card {
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .review-card {
+    max-width: 460px;
+  }
+} */
+
+
+/* ===== RESET ===== */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* ===== PAGE BACKGROUND ===== */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* ===== CARD WRAPPER ===== */
+.review-wrapper {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* ===== REVIEW CARD ===== */
+.review-card {
+    background: #ffffff;
+    width: 420px;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    animation: slideUp 0.6s ease;
+}
+
+/* ===== HEADING ===== */
+.review-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1f3c88;
+}
+
+/* ===== LABELS ===== */
+.review-card label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* ===== INPUTS ===== */
+.review-card input,
+.review-card textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 18px;
+    transition: 0.3s ease;
+}
+
+.review-card input:focus,
+.review-card textarea:focus {
+    outline: none;
+    border-color: #1f3c88;
+    box-shadow: 0 0 0 2px rgba(31,60,136,0.15);
+}
+
+/* ===== TEXTAREA ===== */
+.review-card textarea {
+    resize: none;
+    min-height: 90px;
+}
+
+/* ===== BUTTON ===== */
+.review-card button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1f3c88, #3a7bd5);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.review-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* ===== BACK LINK ===== */
+.back-link {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.back-link a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #1f3c88;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Mobile */
+@media (max-width: 480px) {
+    .review-card {
+        width: 100%;
+        padding: 22px;
+        border-radius: 12px;
+    }
+
+    .review-card h2 {
+        font-size: 18px;
+    }
+
+    .review-card button {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .review-card {
+        width: 90%;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .review-card {
+        width: 450px;
+    }
+}

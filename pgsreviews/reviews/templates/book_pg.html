@@ -1,0 +1,353 @@
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book {{ pg.name }}</title>
+
+  <style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e3f2fd, #f9f9ff);
+    margin: 0;
+    padding: 0;
+  }
+
+  .booking-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .booking-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 460px;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    animation: slideFade 0.6s ease-out;
+  }
+
+  @keyframes slideFade {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .booking-card h2 {
+    text-align: center;
+    margin-bottom: 28px;
+    color: #1a237e;
+    font-weight: 600;
+  }
+
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+  }
+
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1.5px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: all 0.25s ease;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  button {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #1a73e8, #0059c1);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(26, 115, 232, 0.3);
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+
+  @media (max-width: 480px) {
+    .booking-card {
+      padding: 22px;
+    }
+  }
+</style>
+
+
+
+@media (max-width: 480px) {
+  body {
+    background: #eef3ff;
+  }
+
+  .booking-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .booking-card h2 {
+    font-size: 18px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  input[type="date"],
+  textarea {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 11px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .booking-wrapper {
+    padding: 30px;
+  }
+
+  .booking-card {
+    max-width: 90%;
+  }
+
+  .booking-card h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .booking-card {
+    max-width: 420px;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .booking-card {
+    max-width: 480px;
+  }
+}
+
+</head>
+
+<body>
+
+<div class="booking-wrapper">
+  <div class="booking-card">
+
+    <h2>Book {{ pg.name }}</h2>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <label>Move-in Date</label>
+      <input type="date" name="move_in_date" required>
+
+      <label>Message (optional)</label>
+      <textarea name="message" placeholder="Any special request or message..."></textarea>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+
+  </div>
+</div>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book {{ pg.name }}</title>
+
+  <style>
+    /* ===== BASE STYLES ===== */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #e8f0ff, #f9fbff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .booking-wrapper {
+      padding: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .booking-card {
+      background: #ffffff;
+      padding: 30px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .booking-card h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1a237e;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+      color: #333;
+    }
+
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="date"]:focus,
+    textarea:focus {
+      border-color: #1a73e8;
+      box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+    }
+
+    textarea {
+      resize: none;
+      min-height: 90px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      background: linear-gradient(135deg, #1a73e8, #0d47a1);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(26, 115, 232, 0.4);
+    }
+
+    /* ===== MEDIA QUERIES ===== */
+
+    /* 📱 Mobile */
+    @media (max-width: 480px) {
+      .booking-card {
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .booking-card h2 {
+        font-size: 18px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+
+    /* 📲 Tablets */
+    @media (max-width: 768px) {
+      .booking-wrapper {
+        padding: 25px;
+      }
+    }
+
+    /* 🖥️ Large screens */
+    @media (min-width: 1200px) {
+      .booking-card {
+        max-width: 480px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="booking-wrapper">
+    <div class="booking-card">
+      <h2>Book {{ pg.name }}</h2>
+
+      <form method="post">
+        {% csrf_token %}
+
+        <label>Move-in Date</label>
+        <input type="date" name="move_in_date" required>
+
+        <label>Message (optional)</label>
+        <textarea name="message" placeholder="Any special request or message..."></textarea>
+
+        <button type="submit">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

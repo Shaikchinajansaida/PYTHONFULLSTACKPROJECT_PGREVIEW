@@ -1,0 +1,86 @@
+<!-- <h2>Add Review for {{ pg.name }}</h2>
+
+<form method="POST">
+  {% csrf_token %}
+
+  <label>Food Rating (1–5)</label><br>
+  <input type="number" name="food_rating" min="1" max="5" required><br><br>
+
+  <label>Hygiene Rating (1–5)</label><br>
+  <input type="number" name="hygiene_rating" min="1" max="5" required><br><br>
+
+  <textarea name="comment" placeholder="Your experience" required></textarea><br><br>
+
+  <button type="submit">Submit Review</button>
+</form>
+
+<br>
+<a href="{% url 'pg_detail' pg.id %}">Back</a> -->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Review</title>
+  <link rel="stylesheet" href="{% static 'css/review.css' %}">
+</head>
+
+<body>
+
+<!-- <div class="review-wrapper">
+
+  <div class="review-card">
+    <h2>Add Review for {{ pg.name }}</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <label>Food Rating (1–5)</label>
+      <input type="number" name="food_rating" min="1" max="5" required>
+
+      <label>Hygiene Rating (1–5)</label>
+      <input type="number" name="hygiene_rating" min="1" max="5" required>
+
+      <label>Your Experience</label>
+      <textarea name="comment" placeholder="Share your experience..." required></textarea>
+
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <a class="back-link" href="{% url 'pg_detail' pg.id %}">← Back to PG</a>
+  </div>
+
+</div> -->
+
+<div class="review-wrapper">
+  <div class="review-card">
+
+    <h2>Add Review for {{ pg.name }}</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <label>Food Rating (1–5)</label>
+      <input type="number" name="food_rating" min="1" max="5" required>
+
+      <label>Hygiene Rating (1–5)</label>
+      <input type="number" name="hygiene_rating" min="1" max="5" required>
+
+      <label>Your Experience</label>
+      <textarea name="comment" placeholder="Share your experience..." required></textarea>
+
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="back-link">
+      <a href="{% url 'pg_detail' pg.id %}">← Back to PG</a>
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+</html>

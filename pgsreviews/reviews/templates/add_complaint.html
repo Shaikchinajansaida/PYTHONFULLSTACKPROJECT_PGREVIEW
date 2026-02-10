@@ -1,0 +1,185 @@
+<!-- <h2>Raise Complaint for {{ pg.name }}</h2>
+
+<form method="POST">
+  {% csrf_token %}
+
+  <input type="text" name="subject" placeholder="Complaint subject" required><br><br>
+
+  <textarea name="description" placeholder="Describe the issue" required></textarea><br><br>
+
+  <button type="submit">Submit Complaint</button>
+</form>
+
+<br>
+<a href="{% url 'pg_detail' pg.id %}">Back</a> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raise Complaint</title>
+
+    <style>
+        /* ===== RESET ===== */
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ===== PAGE BACKGROUND ===== */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6a00, #ee0979);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== WRAPPER ===== */
+        .complaint-wrapper {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== CARD ===== */
+        .complaint-card {
+            background: #fff;
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: fadeUp 0.6s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== TITLE ===== */
+        .complaint-card h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        /* ===== FORM ELEMENTS ===== */
+        .complaint-card input,
+        .complaint-card textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .complaint-card textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        .complaint-card input:focus,
+        .complaint-card textarea:focus {
+            outline: none;
+            border-color: #ee0979;
+            box-shadow: 0 0 0 2px rgba(238,9,121,0.15);
+        }
+
+        /* ===== BUTTON ===== */
+        .complaint-card button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: linear-gradient(135deg, #ee0979, #ff6a00);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .complaint-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #ee0979;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== MEDIA QUERIES ===== */
+
+        /* 📱 Mobile */
+        @media (max-width: 480px) {
+            .complaint-card {
+                padding: 22px;
+            }
+
+            .complaint-card h2 {
+                font-size: 20px;
+            }
+
+            .complaint-card button {
+                font-size: 14px;
+            }
+        }
+
+        /* 📱 Tablet */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="complaint-wrapper">
+    <div class="complaint-card">
+
+        <h2>Raise Complaint for {{ pg.name }}</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <input type="text" name="subject" placeholder="Complaint subject" required>
+
+            <textarea name="description" placeholder="Describe the issue" required></textarea>
+
+            <button type="submit">Submit Complaint</button>
+        </form>
+
+        <a class="back-link" href="{% url 'pg_detail' pg.id %}">← Back</a>
+
+    </div>
+</div>
+
+</body>
+</html>

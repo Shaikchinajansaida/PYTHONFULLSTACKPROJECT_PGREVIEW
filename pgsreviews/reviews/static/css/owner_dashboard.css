@@ -1,0 +1,175 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== BACKGROUND ===== */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== MAIN WRAPPER ===== */
+.dashboard-wrapper {
+    width: 90%;
+    max-width: 1100px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 0.6s ease;
+}
+
+/* ===== HEADER ===== */
+.dashboard-header {
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+}
+
+.dashboard-header h1 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.dashboard-header p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.logout-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+/* ===== PG SECTION ===== */
+.pg-section {
+    margin-top: 30px;
+}
+
+.pg-section h2 {
+    margin-bottom: 20px;
+    color: #34495e;
+}
+
+/* ===== GRID ===== */
+.pg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* ===== PG CARD ===== */
+.pg-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pg-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.pg-card h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.pg-card p {
+    color: #555;
+    margin: 6px 0;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.pg-actions {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pg-actions a {
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #4a6cf7, #364fc7);
+    font-size: 14px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.pg-actions a:hover {
+    background: linear-gradient(135deg, #364fc7, #2b3db8);
+    transform: translateY(-2px);
+}
+
+/* ===== EMPTY TEXT ===== */
+.empty-text {
+    color: #777;
+    font-size: 16px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+/* 📱 Mobile */
+@media (max-width: 480px) {
+    .dashboard-wrapper {
+        padding: 20px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 22px;
+    }
+
+    .pg-actions a {
+        font-size: 13px;
+        padding: 7px;
+    }
+}
+
+/* 📱 Tablet */
+@media (max-width: 768px) {
+    .dashboard-wrapper {
+        width: 95%;
+    }
+}
+
+/* 💻 Large screens */
+@media (min-width: 1200px) {
+    .dashboard-wrapper {
+        padding: 40px;
+    }
+}
