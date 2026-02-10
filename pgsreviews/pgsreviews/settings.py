@@ -28,7 +28,18 @@ SECRET_KEY =os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "pythonfullstackproject-pgreview.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://pythonfullstackproject-pgreview.onrender.com",
+]
+
 
 
 # Application definition
